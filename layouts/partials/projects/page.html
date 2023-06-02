@@ -1,0 +1,26 @@
+<section class="container page">
+  <article>
+    <header>
+      <h1 class="title">
+        <a class="title-link" href="{{ .Permalink | safeURL }}">
+          {{ .Title }}
+        </a>
+      </h1>
+      {{ with .GetTerms "authors" }}{{ partial "taxonomy/authors.html" . }}{{ end }}
+      <!-- {{ with .GetTerms "categories" }}{{ partial "taxonomy/categories.html" . }}{{ end }} -->
+      {{ with .GetTerms "tags" }}{{ partial "taxonomy/tags.html" . }}{{ end }}
+    </header>
+    <div class="cover-container">
+      {{ with .Resources.GetMatch (.Params.cover | default "**/cover.*") }}
+        {{ if eq (.MediaType.Type | lower) "image/svg+xml" }}
+          <img class="page-cover" src="{{ .RelPermalink }}" alt="">
+        {{ else }}
+          {{ with .Resize "400x webp" }}
+            <img class="page-cover" src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" alt="">
+          {{ end }}
+        {{ end }}
+      {{ end }}
+    </div>
+    {{ .Content }}
+  </article>
+</section>

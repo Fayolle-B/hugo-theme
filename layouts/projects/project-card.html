@@ -1,0 +1,44 @@
+<a class="card-link" href="{{ .RelPermalink }}">
+<div class="project-card">
+  
+    {{ with (.Params.cover | default "**/cover.*") }}
+    <img class="card-cover" src="/images/cover/{{ . }}" alt="" />
+
+ {{ end }}  
+    <div class="project-details">
+      <h2 class="project-title">{{ .Title }}</h2>
+
+      {{ if( .Params.start_date)}}
+      <p class="project-dates">
+        {{ dateFormat "January 2006" .Params.start_date }} - {{ if
+        .Params.end_date }} {{ dateFormat "January 2006" .Params.end_date }} {{
+        else }} {{ i18n "now" | default "NOW" }} {{ end }}
+      </p>
+      {{ end }}
+      {{with .Description}}
+      <p class="description">{{.}}</p>
+      {{end}}
+      <ul id="icons">
+        {{ range .Params.tags }}
+          {{ $tag := . }}
+          {{range where site.Data.tags.tags "name" $tag}}
+          <li>
+            {{if strings.HasSuffix .icon ".svg"}}
+              <img src="{{ .icon }}"  alt="{{ i18n $tag | default $tag }}" class="tag-icon svg-tag-icon">
+              {{else if strings.HasPrefix .icon "fa"}}
+               <i class="fa {{.icon}}" aria-hidden="true"></i> 
+               
+              {{else}}
+              {{.icon | emojify}}
+            </li>
+            {{end}}
+          
+          {{end}}
+        {{ end }}  
+      </ul>
+      
+        
+
+    </div>
+  </div>
+</a>

@@ -1,0 +1,10 @@
+Ressource : {{.Permalink}}
+{{with .Resources}}
+    {{with .GetMatch (.Params.cover | default "cover.*") }} 
+        {{ $cover := .Resize "600x"}}
+        {{ with $cover}}
+        cover
+            <img src="{{ .Permalink}}" alt="{{.Title}}">
+        {{end}}
+    {{end}}
+{{end}}

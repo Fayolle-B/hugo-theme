@@ -1,0 +1,12 @@
+<div class="project-card">
+    <a class="cover-link" href="{{ .RelPermalink }}">
+      <img class="cover-image" src="{{ .Params.cover }}" alt="{{ .Title }} Cover">
+    </a>
+    <div class="project-details">
+      <h2 class="project-title">{{ .Title }}</h2>
+      <p class="project-dates">
+        {{ dateFormat "January 2006" .Params.start_date }} - {{ dateFormat "January 2006" .Params.end_date }}
+      </p>
+    </div>
+  </div>
+  

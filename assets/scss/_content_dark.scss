@@ -1,0 +1,66 @@
+@mixin content_dark {
+  .content {
+    .post {
+      .tags {
+        .tag {
+          background-color: $alt-bg-color-dark;
+
+          a {
+            color: $fg-color-dark;
+          }
+          a:active {
+            color: $fg-color-dark;
+          }
+        }
+      }
+    }
+    .list {
+      ul {
+        li {
+          .title {
+            color: $fg-color-dark;
+
+            &:hover,
+            &:focus {
+              color: $link-color-dark;
+            }
+          }
+        }
+      }
+    }
+
+    .centered {
+      .about {
+        ul {
+          li {
+            a {
+              color: $fg-color-dark;
+
+              &:hover,
+              &:focus {
+                color: $link-color-dark;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  .project-card:hover {
+    box-shadow: 0px 5px 10px rgba($alt-bg-color,.3);
+  }
+  .cover-container{
+    background-color: $alt-bg-color
+  }
+}
+
+body.colorscheme-dark {
+  @include content_dark();
+}
+
+body.colorscheme-auto {
+  @media (prefers-color-scheme: dark) {
+    @include content_dark();
+  }
+}
