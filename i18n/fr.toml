@@ -73,3 +73,14 @@ other = "error"
 [link_to_heading]
 other = "Link to heading"
 
+[graphical]
+other= "interface graphique"
+
+[game]
+other= "jeu"
+
+[college]
+other= "Projet universitaire"
+
+[personal]
+other = "Projet personnel"

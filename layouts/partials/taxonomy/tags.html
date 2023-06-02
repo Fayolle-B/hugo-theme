@@ -5,7 +5,7 @@
       <span class="separator">•</span>
     {{- end }}
     <span class="tag">
-      <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+      <a href="{{ .RelPermalink }}">{{ i18n .LinkTitle | default .LinkTitle }}</a>
     </span>
   {{- end -}}
 </div>
