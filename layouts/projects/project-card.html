@@ -1,7 +1,7 @@
 <a class="card-link" href="{{ .RelPermalink }}">
 <div class="project-card">
   
-    {{ with (.Params.cover | default "**/cover.*") }}
+    {{ with (.Params.cover | default "default.svg") }}
     <img class="card-cover" src="/images/cover/{{ . }}" alt="" />
 
  {{ end }}  

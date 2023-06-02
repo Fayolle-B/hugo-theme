@@ -11,13 +11,11 @@
       {{ with .GetTerms "tags" }}{{ partial "taxonomy/tags.html" . }}{{ end }}
     </header>
     <div class="cover-container">
-      {{ with .Resources.GetMatch (.Params.cover | default "**/cover.*") }}
-        {{ if eq (.MediaType.Type | lower) "image/svg+xml" }}
-          <img class="page-cover" src="{{ .RelPermalink }}" alt="">
+      {{ with (.Params.cover | default "default.svg") }}
+          {{if strings.HasSuffix . ".svg"}}
+          <img class="page-cover" src="/images/cover/{{ . }}" alt="">
         {{ else }}
-          {{ with .Resize "400x webp" }}
-            <img class="page-cover" src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" alt="">
-          {{ end }}
+            <img class="page-cover" src="/images/cover/{{ . }}"  alt="">
         {{ end }}
       {{ end }}
     </div>
