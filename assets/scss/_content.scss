@@ -147,12 +147,12 @@
     }
   }
 
-  .post {
+  .post , .project {
     .post-title {
       margin-bottom: 0.75em;
     }
 
-    .post-meta {
+    .post-meta, .project-meta {
       i {
         text-align: center;
         width: 1.6rem;
@@ -185,6 +185,17 @@
         }
       }
     }
+  }
+  #project_link{
+
+      text-align: center;
+      #project_link_div {
+        display: block;
+        p{
+          display: contents;
+        }
+      }
+    
   }
 
   figure {

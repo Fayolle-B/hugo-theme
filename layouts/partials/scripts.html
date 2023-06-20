@@ -1,0 +1,34 @@
+{{ if .Site.IsServer }}
+{{ $script := resources.Get "js/coder.js" }}
+<script src="{{ $script.RelPermalink }}"></script>
+
+{{ $contact := resources.Get "js/contact.js" | minify | fingerprint -}}
+<script defer src="{{ $contact.RelPermalink }}"></script>
+
+{{ else }}
+{{ $script := resources.Get "js/coder.js" | minify | fingerprint }}
+<script src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}"></script>
+{{ end }}
+
+{{ range .Site.Params.customJS }}
+{{ if $.Site.IsServer }}
+{{ $script := resources.Get . }}
+<script src="{{ $script.RelPermalink }}"></script>
+{{ else }}
+{{ $script := resources.Get . | minify | fingerprint }}
+<script src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}"></script>
+{{ end }}
+{{ end }}
+
+{{ range .Site.Params.customRemoteJS }}
+{{ if $.Site.IsServer }}
+{{ $script := resources.GetRemote . }}
+<script src="{{ $script.RelPermalink }}"></script>
+{{ else }}
+{{ $script := resources.GetRemote . | minify | fingerprint }}
+<script src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}"></script>
+{{ end }}
+{{ end }}
+
+
+

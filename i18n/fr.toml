@@ -84,3 +84,46 @@ other= "Projet universitaire"
 
 [personal]
 other = "Projet personnel"
+
+
+[js_required]
+other = "Javascript doit être activé pour utiliser ce formulaire de contact."
+
+[contact_submitted]
+other = "Votre message a été envoyé."
+
+[contact_error]
+other = "Une erreur est survenue lors de l'envoi du formulaire."
+
+[contact_name]
+other = "Nom"
+
+[contact_name_placeholder]
+other = "Votre nom"
+
+[contact_mail]
+other = "Adresse e-mail"
+
+[contact_mail_placeholder]
+other = "Votre adresse e-mail"
+
+[contact_subject]
+other = "Sujet"
+
+[contact_subject_placeholder]
+other = "Le sujet du message"
+
+[contact_message]
+other = "Message"
+
+[contact_message_placeholder]
+other = "Contenu du message"
+
+[contact_submit]
+other = "Envoyer"
+
+[contact_honeypot]
+other = "Ne faites pas attention à ça si vous êtes humain"
+
+[project_source]
+other = "Source du projet" 

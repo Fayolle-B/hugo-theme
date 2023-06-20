@@ -1,4 +1,4 @@
-<section class="container page">
+<section class="container project">
   <article>
     <header>
       <h1 class="title">
@@ -6,9 +6,12 @@
           {{ .Title }}
         </a>
       </h1>
-      {{ with .GetTerms "authors" }}{{ partial "taxonomy/authors.html" . }}{{ end }}
-      <!-- {{ with .GetTerms "categories" }}{{ partial "taxonomy/categories.html" . }}{{ end }} -->
-      {{ with .GetTerms "tags" }}{{ partial "taxonomy/tags.html" . }}{{ end }}
+      <div class="project-meta">
+
+        {{ with .GetTerms "authors" }}{{ partial "taxonomy/authors.html" . }}{{ end }}
+        <!-- {{ with .GetTerms "categories" }}{{ partial "taxonomy/categories.html" . }}{{ end }} -->
+        {{ with .GetTerms "tags" }}{{ partial "taxonomy/tags.html" . }}{{ end }}
+      </div>
     </header>
     <div class="cover-container">
       {{ with (.Params.cover | default "default.svg") }}
@@ -19,6 +22,33 @@
         {{ end }}
       {{ end }}
     </div>
+
+    {{ with .Params.source}}
+    {{$source := .}}
+    <div id="project_link">
+        <h2 class="source">{{ i18n "project_source" | default "project source"}} </h2>
+        {{range where site.Data.websites.websites "name" $source.site}}
+        <a href="{{$source.url}}" target="_blank"v style="color: {{.color}};">
+        <div id="project_link_div">
+
+            
+            {{if strings.HasSuffix .icon ".svg"}}
+            <img src="{{ .icon }}"  alt="{{.name}}" class="website-icon svg-tag-icon">
+            {{else if strings.HasPrefix .icon "fa"}}
+            
+            <i class="fa {{.icon}} fa-2x" aria-hidden="true"></i> 
+            
+            {{else}}
+            ee
+            {{.icon | emojify}}
+            {{end}}
+            <p>{{$source.url}}</p>
+            
+          </a>
+        </div>
+      </div>
+      {{end}}
+    {{end}}
     {{ .Content }}
   </article>
 </section>
